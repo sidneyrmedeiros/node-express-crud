@@ -1,12 +1,16 @@
 version: '3.1'
 services:
   mongo:  
+    container_name: 'crud-mongo'
     image: mongo
     ports:  
     - "27017:27017"  
     volumes:  
     - './dbdata:/data/db'  
+    networks:
+    - nodejs-network
   app:  
+    container_name: 'crud-node-api'
     build: 
       context: .
       dockerfile: Dockerfile
@@ -19,10 +23,13 @@ services:
     links:  
     - mongo  
     environment:
-      NODE_ENV: production
+      NODE_ENV: dev
       AMQP_URL: amqp://guest:guest@rabbitmq:5672
     networks:
-      - rabbitmq_nodejs
+      - nodejs-network
+    depends_on:
+      - mongo
+      - rabbitmq
   rabbitmq:
     image: rabbitmq:3.8-management-alpine
     container_name: 'rabbitmq'
@@ -33,7 +40,7 @@ services:
         - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
         - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
     networks:
-        - rabbitmq_nodejs
+        - nodejs-network
 networks:
-  rabbitmq_nodejs:
+  nodejs-network:
     driver: bridge

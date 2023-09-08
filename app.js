@@ -18,10 +18,11 @@ var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 
 // Connect to MongoDB
-
+let mongoDbUrl = process.env.MONGODB_URL + process.env.NODE_ENV || 'mongodb://mongo:27017/docker-node-mongo' + process.env.NODE_ENV
+console.log(mongoDbUrl)
 mongoose
     .connect(
-        process.env.MONGODB_URL || 'mongodb://mongo:27017/docker-node-mongo',
+        mongoDbUrl,
         { useNewUrlParser: true }
     )
     .then(() => console.log('MongoDB Connected'))

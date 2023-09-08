@@ -17,16 +17,16 @@ const doc = {
     produces: ['application/json'],
     tags: [
         {
-            "name": "User",
-            "description": "Endpoints"
+            "name": "Utils",
+            "description": "Utils endpoints"
         },
         {
             "name": "Product",
-            "description": "Endpoints"
+            "description": "Products endpoints"
         },
         {
-            "name": "Joke",
-            "description": "Endpoints"
+            "name": "Auth",
+            "description": "Authentication Endpoint"
         }
     ],
     securityDefinitions: {

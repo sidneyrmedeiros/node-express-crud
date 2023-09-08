@@ -6,16 +6,10 @@ const productRoutes = require("./ProductRoutes");
 const router = express.Router();
 
 module.exports = params => {
-  router.get('/', async (req, res, next) => {
-    try {
-      res.send('Home');
-
-    } catch (err) {
-      return next(err);
-    }
-  });
 
   router.get('/api/health', async (req, res, next) => {
+    // #swagger.tags = ['Utils']
+    // #swagger.description = 'Verificar a API.'
     try {
       res.status(200).send('Ok');
 
@@ -25,7 +19,7 @@ module.exports = params => {
   });
 
   router.get('/api/joke', async (req, res, next) => {
-    // #swagger.tags = ['Joke']
+    // #swagger.tags = ['Utils']
     // #swagger.description = 'Endpoint para obter piadas aleatórias.'
     try {
       axios.get('https://api.chucknorris.io/jokes/random')
@@ -37,7 +31,7 @@ module.exports = params => {
   });
 
   router.post('/api/auth', async (req, res, next) => {
-    // #swagger.tags = ['User']
+    // #swagger.tags = ['Auth']
     // #swagger.description = 'Auth JWT, username: admin, password: 123456'
 
     const { username, password } = req.body;

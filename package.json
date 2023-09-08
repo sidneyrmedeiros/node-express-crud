@@ -1,5 +1,5 @@
 {
-  "name": "crud-compass",
+  "name": "crud-node",
   "version": "1.0.0",
   "description": "Node crud for Compass",
   "main": "app.js",

@@ -9,16 +9,16 @@
   "basePath": "/",
   "tags": [
     {
-      "name": "User",
-      "description": "Endpoints"
+      "name": "Utils",
+      "description": "Utils endpoints"
     },
     {
       "name": "Product",
-      "description": "Endpoints"
+      "description": "Products endpoints"
     },
     {
-      "name": "Joke",
-      "description": "Endpoints"
+      "name": "Auth",
+      "description": "Authentication Endpoint"
     }
   ],
   "schemes": [
@@ -38,19 +38,12 @@
     "application/json"
   ],
   "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/health": {
       "get": {
-        "description": "",
+        "tags": [
+          "Utils"
+        ],
+        "description": "Verificar a API.",
         "responses": {
           "200": {
             "description": "OK"
@@ -61,7 +54,7 @@
     "/api/joke": {
       "get": {
         "tags": [
-          "Joke"
+          "Utils"
         ],
         "description": "Endpoint para obter piadas aleatórias.",
         "responses": {
@@ -74,7 +67,7 @@
     "/api/auth": {
       "post": {
         "tags": [
-          "User"
+          "Auth"
         ],
         "description": "Auth JWT, username: admin, password: 123456",
         "parameters": [
