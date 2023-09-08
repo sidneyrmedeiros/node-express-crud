@@ -11,6 +11,8 @@ exports.getAllProducts = async (req, res) => {
 
 exports.createProduct = async (req, res) => {
     try {
+        req.body.createdBy = req.userInfo.username;
+        req.body.updatedBy = req.userInfo.username;
         const product = await productService.createProduct(req.body);
         res.json({ data: product, status: "success" });
     } catch (err) {
@@ -29,6 +31,7 @@ exports.getProductById = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
     try {
+        req.body.updatedBy = req.userInfo.username;
         const product = await productService.updateProduct(req.params.id, req.body);
         res.json({ data: product, status: "success" });
     } catch (err) {

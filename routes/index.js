@@ -1,6 +1,5 @@
 const express = require('express');
 const axios = require('axios');
-//const productsRoute = require('./products');
 const productRoutes = require("./ProductRoutes");
 
 
@@ -37,7 +36,39 @@ module.exports = params => {
     }
   });
 
+  router.post('/api/auth', async (req, res, next) => {
+    // #swagger.tags = ['User']
+    // #swagger.description = 'Auth JWT, username: admin, password: 123456'
 
+    const { username, password } = req.body;
+
+    if (username === "admin" && password === "123456") {
+      const jwt = require("jsonwebtoken");
+      const dataUser = {
+        username: "admin",
+        email: "admin@compass.uol",
+        id: 1
+      };
+
+      const privateKey = "compass.uol";
+
+      jwt.sign(dataUser, privateKey, (err, token) => {
+        if (err) {
+          res
+            .status(500)
+            .json({ message: "Error creating JWT" });
+
+          return;
+        }
+
+        res.set("x-access-token", token);
+        res.end();
+      });
+    } else {
+      res.status(401);
+      res.end();
+    }
+  });
 
   //router.use('/products', productsRoute(params));
   router.use('/api/products', productRoutes);
