@@ -10,7 +10,7 @@ services:
   build: 
     context: .
     dockerfile: Dockerfile
-  command: bash -c "npm install; nodemon server.js --color=always"  
+  command: bash -c "npm install; nodemon app.js --color=always"  
   ports:  
    - "8080:8080"  
    - "5858:5858"  

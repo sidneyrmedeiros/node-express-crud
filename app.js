@@ -2,6 +2,7 @@
 
 const express = require('express');
 require('dotenv').config()
+const routes = require('./routes');
 
 // Constants
 const PORT = 8080;
@@ -14,11 +15,10 @@ var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 
 // Connect to MongoDB
-var mongoaddr = process.env.CONFIG_MONGODB_URL
-console.log(mongoaddr);
+
 mongoose
     .connect(
-        mongoaddr,
+        process.env.MONGODB_URL || 'mongodb://mongo:27017/docker-node-mongo',
         { useNewUrlParser: true }
     )
     .then(() => console.log('MongoDB Connected'))
@@ -29,15 +29,15 @@ const Item = require('./models/Product');
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/', (req, res) => {
-    res.send('Home');
-});
+app.use(
+    '/',
+    routes()
+);
 
-app.get('/products', async (req, res) => {
-    var products = await Product.find({})
-    res.send(products)
-})
-
-app.listen(PORT, HOST, () => {
-    console.log(`Running on http://${HOST}:${PORT}`);
-});
+if (process.env.NODE_ENV === 'test') {
+    module.exports = app
+} else {
+    app.listen(PORT, HOST, () => {
+        console.log(`Running on http://${HOST}:${PORT}`);
+    });
+}
