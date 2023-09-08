@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:latest
 
 RUN npm install nodemon -g  
 
