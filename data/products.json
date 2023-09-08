@@ -1,0 +1,28 @@
+[
+  {
+    "name": "sabonete",
+    "description": "Sabonete líquido 1L",
+    "price": 2,
+    "createdAt": {
+      "$date": "2022-12-22T12:18:06.844+0530"
+    },
+    "updatedAt": {
+      "$date": "2022-12-22T12:18:06.844+0530"
+    },
+    "createdBy": "1",
+    "updatedBy": "1"
+  },
+  {
+    "name": "pasta de dente",
+    "description": "Pasta de dente de menta 50g",
+    "price": 10,
+    "createdAt": {
+      "$date": "2022-12-22T12:18:06.844+0530"
+    },
+    "updatedAt": {
+      "$date": "2022-12-22T12:18:06.844+0530"
+    },
+    "createdBy": "1",
+    "updatedBy": "1"
+  }
+]

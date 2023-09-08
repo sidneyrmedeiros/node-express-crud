@@ -1,0 +1,45 @@
+{
+  "name": "crud-compass",
+  "version": "1.0.0",
+  "description": "Node crud for Compass",
+  "main": "app.js",
+  "scripts": {
+    "test": "NODE_ENV=test npx mocha --timeout 10000",
+    "start": "nodemon app.js",
+    "swagger-autogen": "node swagger.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidneyrmedeiros/node-crud-compass.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "mongodb",
+    "swagger",
+    "express",
+    "Docker"
+  ],
+  "author": "Sidney Medeiros <sidneyRmedeiros@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sidneyrmedeiros/node-crud-compass/issues"
+  },
+  "homepage": "https://github.com/sidneyrmedeiros/node-crud-compass#readme",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "axios": "^1.5.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.0",
+    "nodemon": "^3.0.1",
+    "swagger-autogen": "^2.23.5",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.8",
+    "chai-http": "^4.4.0",
+    "mocha": "^10.2.0"
+  }
+}
