@@ -47,3 +47,9 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
+app.use((req, res, next) => {
+    //console.log(req.url);
+    const publisher = require('./publisher')
+    next();
+});
