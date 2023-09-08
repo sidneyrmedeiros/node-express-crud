@@ -5,6 +5,8 @@ exports.getAllProducts = async () => {
 };
 
 exports.createProduct = async (product) => {
+    product.createdBy = 1;
+    product.updatedBy = 1;
     return await ProductModel.create(product);
 };
 exports.getProductById = async (id) => {

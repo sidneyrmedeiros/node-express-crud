@@ -15,14 +15,6 @@ const productSchema = new Schema({
         get: v => (v / 100).toFixed(2),
         set: v => v * 100
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
     createdBy: {
         type: String,
         required: true
@@ -33,7 +25,8 @@ const productSchema = new Schema({
     }
 },
     {
-        toJSON: { getters: true }
+        toJSON: { getters: true },
+        timestamps: true
     });
 
 module.exports = Product = mongoose.model('Product', productSchema);

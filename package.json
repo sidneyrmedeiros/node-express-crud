@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "NODE_ENV=test npx mocha --timeout 10000",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "swagger-autogen": "node swagger.js"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,9 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongoose": "^7.5.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "swagger-autogen": "^2.23.5",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "chai": "^4.3.8",

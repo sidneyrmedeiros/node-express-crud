@@ -5,11 +5,14 @@ require('dotenv').config()
 const routes = require('./routes');
 
 // Constants
-const PORT = 8080;
+const PORT = 3000;
 const HOST = '0.0.0.0';
 
 // App
 const app = express();
+
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger_output.json')
 
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
@@ -34,6 +37,7 @@ app.use(
     routes()
 );
 
+
 if (process.env.NODE_ENV === 'test') {
     module.exports = app
 } else {
@@ -41,3 +45,5 @@ if (process.env.NODE_ENV === 'test') {
         console.log(`Running on http://${HOST}:${PORT}`);
     });
 }
+
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerFile))

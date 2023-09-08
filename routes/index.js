@@ -26,6 +26,8 @@ module.exports = params => {
   });
 
   router.get('/api/joke', async (req, res, next) => {
+    // #swagger.tags = ['Joke']
+    // #swagger.description = 'Endpoint para obter piadas aleatórias.'
     try {
       axios.get('https://api.chucknorris.io/jokes/random')
         .then(response => res.send({ value: response.data.value }))
