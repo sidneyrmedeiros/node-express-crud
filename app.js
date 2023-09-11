@@ -1,7 +1,8 @@
 'use strict';
 
 const express = require('express');
-require('dotenv').config()
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
+
 const routes = require('./routes');
 
 // Constants
@@ -17,12 +18,12 @@ const swaggerFile = require('./swagger_output.json')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 
+console.log(process.env.NODE_ENV)
 // Connect to MongoDB
-let mongoDbUrl = process.env.MONGODB_URL + process.env.NODE_ENV || 'mongodb://mongo:27017/docker-node-mongo' + process.env.NODE_ENV
-console.log(mongoDbUrl)
+console.log(process.env.MONGODB_URL)
 mongoose
     .connect(
-        mongoDbUrl,
+        process.env.MONGODB_URL,
         { useNewUrlParser: true }
     )
     .then(() => console.log('MongoDB Connected'))
@@ -49,8 +50,9 @@ if (process.env.NODE_ENV === 'test') {
 
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
+// A cada solicitação enviar dados para o RabbitMQ
 app.use((req, res, next) => {
     //console.log(req.url);
-    const publisher = require('./publisher')
+    //const publisher = require('./publisher')
     next();
 });
