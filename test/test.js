@@ -26,7 +26,7 @@ describe("Auth", () => {
                 done();
             });
     });
-    console.log('token=', token);
+
     describe("/post authenticated", () => {
         it("should post authenticated successfully", done => {
 
