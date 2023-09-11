@@ -23,7 +23,7 @@ Foi utilizada a seguinte stack:
 - NodeJS
 - Express
 - MongoDB
-- Doker
+- Docker
 - RabbitMQ (incomplete)
 
 ## Instalation
@@ -50,6 +50,11 @@ Once everything is installed, you are ready to go.
 ```
 3. To access the Products API: [http://localhost:3000/api/products](http://localhost:3000/api/products)
 4. To access the Joke API: [http://localhost:3000/api/joke](http://localhost:3000/api/joke)
+```json
+{
+  "value": "Greek Gods fled to Mount Olympus they saw Chuck Norris wandered on earth."
+}
+```
 5. To access the local RabbitMQ: [http://localhost:15673/](http://localhost:15673/)
 
 Once everything is installed, you are ready to go.
